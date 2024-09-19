@@ -31,4 +31,3 @@
       Quando preencher email "mic@local.dev" e senha ""
       E clicar em Entrar
       Entao o sistema mostra a primeira notificacao de erro "Senha é um campo obrigatório"
-
