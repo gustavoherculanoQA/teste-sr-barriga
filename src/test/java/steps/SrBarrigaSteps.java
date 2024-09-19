@@ -1,5 +1,6 @@
 package steps;
 
+import config.Navegador;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
@@ -8,31 +9,18 @@ import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import pages.LoginPage;
 import pages.NotificationMessagePage;
 
 public class SrBarrigaSteps {
 
     WebDriver driver;
-    ChromeOptions options;
     NotificationMessagePage notfy;
     LoginPage pLogin;
 
     @Before
     public void antesDeCenario() {
-        options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-crash-reporter");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-in-process-stack-traces");
-        options.addArguments("--disable-logging");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--log-level=3");
-        options.addArguments("--output=/dev/null");
-        driver = new ChromeDriver(options);
+        driver = Navegador.getChrome();
         notfy = new NotificationMessagePage(driver);
         pLogin = new LoginPage(driver);
         driver.manage().window().maximize();
